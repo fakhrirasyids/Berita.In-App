@@ -1,9 +1,9 @@
 package com.fakhrirasyids.beritain.ui.main
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.findNavController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.fakhrirasyids.beritain.R
 import com.fakhrirasyids.beritain.databinding.ActivityMainBinding
@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpNavigation() {
         val navView: BottomNavigationView = binding.navView
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_activity_main) as NavHostFragment
+        val navController = navHostFragment.navController
         navView.setupWithNavController(navController)
     }
 

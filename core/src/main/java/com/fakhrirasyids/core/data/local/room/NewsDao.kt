@@ -21,15 +21,21 @@ interface NewsDao {
     @Query("DELETE FROM news WHERE newsType = 'searched'")
     fun refreshSearchedNews()
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(news: List<NewsEntity>)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insert(news: NewsEntity): Long
+
+    @Query("UPDATE news SET newsType = :newsType WHERE title = :title")
+    fun updateNewsType(newsType: String, title: String)
 
     @Transaction
-    suspend fun insertNews(news: List<NewsEntity>) {
-        if (news[0].newsType == SEARCHED_NEWS) {
+    suspend fun insertNews(news: NewsEntity) {
+        if (news.newsType == SEARCHED_NEWS) {
             refreshSearchedNews()
         }
-        insert(news)
+        val id: Long = insert(news)
+        if (id == -1L) {
+            updateNewsType(news.newsType.toString(), news.title)
+        }
     }
 
     @Update
