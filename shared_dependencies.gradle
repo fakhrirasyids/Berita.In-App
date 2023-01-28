@@ -1,5 +1,11 @@
 dependencies {
 
+    testImplementation "org.mockito:mockito-core:3.2.4"
+    testImplementation "org.mockito:mockito-inline:3.2.4"
+
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.1"
+
     // SQLCipher
     implementation "net.zetetic:android-database-sqlcipher:4.4.0"
     implementation "androidx.sqlite:sqlite-ktx:2.3.0"

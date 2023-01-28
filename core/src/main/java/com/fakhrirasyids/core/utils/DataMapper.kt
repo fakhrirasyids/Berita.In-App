@@ -10,7 +10,7 @@ object DataMapper {
     fun mapResponsesToEntities(newsList: List<ArticlesItem>, newsType: String): List<NewsEntity> {
 
         val newEmptyList: List<ArticlesItem>
-        val tourismList = ArrayList<NewsEntity>()
+        val newNewsList = ArrayList<NewsEntity>()
 
         if (newsType == LATEST_NEWS || newsType == SEARCHED_NEWS) {
             newEmptyList = if (newsList.size >= 10) {
@@ -23,7 +23,7 @@ object DataMapper {
 
             if (newsType == LATEST_NEWS) {
                 newEmptyList.map {
-                    val tourism = NewsEntity(
+                    val news = NewsEntity(
                         title = it.title!!,
                         urlToImage = it.urlToImage,
                         url = it.url,
@@ -33,11 +33,11 @@ object DataMapper {
                         isLatest = true,
                         isFavorite = false
                     )
-                    tourismList.add(tourism)
+                    newNewsList.add(news)
                 }
             } else {
                 newEmptyList.map {
-                    val tourism = NewsEntity(
+                    val news = NewsEntity(
                         title = it.title!!,
                         urlToImage = it.urlToImage,
                         url = it.url,
@@ -46,11 +46,11 @@ object DataMapper {
                         newsType = newsType,
                         isFavorite = false
                     )
-                    tourismList.add(tourism)
+                    newNewsList.add(news)
                 }
             }
 
-            return tourismList
+            return newNewsList
         } else {
             newEmptyList = if (newsList.size >= 5) {
                 newsList.filterIndexed { index, _ ->
@@ -61,7 +61,7 @@ object DataMapper {
             }
 
             newEmptyList.map {
-                val tourism = NewsEntity(
+                val news = NewsEntity(
                     title = it.title!!,
                     urlToImage = it.urlToImage,
                     url = it.url,
@@ -70,9 +70,9 @@ object DataMapper {
                     newsType = newsType,
                     isFavorite = false
                 )
-                tourismList.add(tourism)
+                newNewsList.add(news)
             }
-            return tourismList
+            return newNewsList
         }
     }
 
