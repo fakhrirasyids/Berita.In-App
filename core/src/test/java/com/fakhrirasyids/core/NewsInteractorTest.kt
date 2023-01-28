@@ -1,4 +1,4 @@
-package com.fakhrirasyids.core.domain
+package com.fakhrirasyids.core
 
 import com.fakhrirasyids.core.data.Resource
 import com.fakhrirasyids.core.domain.repository.INewsRepository
