@@ -23,6 +23,8 @@ class FavoriteActivity : AppCompatActivity() {
 
         loadKoinModules(favoriteModule)
 
+        binding.toolbar.setNavigationOnClickListener { onBackPressed() }
+
         val newsAdapter = NewsAdapter()
 
         newsAdapter.onItemClick = { news ->
