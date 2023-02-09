@@ -17,4 +17,4 @@ Simple News App built with Kotlin.
 
 ## Todo
 - Add Webview
-- Add Settings
+- Add App Settings
