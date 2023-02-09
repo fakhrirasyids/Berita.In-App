@@ -16,4 +16,4 @@ Simple News App built with Kotlin.
 - SSL Certificate Pinning
 
 ## Todo
-- Beautify layout
+- Add Webview
